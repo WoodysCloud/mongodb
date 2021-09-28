@@ -14,4 +14,7 @@ router.post("/", boardController.saveBoard);
 // 게시물 삭제
 router.delete("/:id", boardController.deleteBoard);
 
+// 게시물 수정
+router.put("/:id", boardController.updateBoard);
+
 module.exports = router;
