@@ -1,4 +1,5 @@
 const user = require("../../models/user");
+const jwtModule = require("../../modules/jwtModule");
 
 const authController = {
   // 회원가입
@@ -36,8 +37,19 @@ const authController = {
     try {
       const result = await user.findOne({ userId, password }); // 동일한 userId가 있는가?
       if (result) {
+        // 사용자 확인을 마친 후(로그인 성공 후)에 토큰 발급
+        // payload에 userId값을 받아 옴 -> 보통 민감하지 않은, 식별 가능한 정보들을 받아옴
+        const payload = {
+          userId: result.userId,
+          name: result.name,
+        };
+
+        const token = jwtModule.create(payload);
+        // console.log(token);
+
         res.status(200).json({
           message: "로그인 성공",
+          accessToken: token,
         });
       } else {
         res.status(400).json({
