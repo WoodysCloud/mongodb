@@ -1,7 +1,15 @@
 import React from "react";
+import FullCenterContatiner from "../components/common/contatiner/FullCenterContatiner";
+import SignUpContainer from "../containers/auth/SignUpContainer";
 
 function SignUp() {
-  return <div>회원가입</div>;
+  return (
+    <>
+      <FullCenterContatiner>
+        <SignUpContainer />
+      </FullCenterContatiner>
+    </>
+  );
 }
 
 export default SignUp;
