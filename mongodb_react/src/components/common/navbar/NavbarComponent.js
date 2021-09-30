@@ -81,7 +81,7 @@ const NavProfileImg = styled.div`
   margin-left: 3rem;
 `;
 
-function NavbarComponent() {
+function NavbarComponent({ isLoggedin }) {
   return (
     <>
       <NavbarWrap>
@@ -89,8 +89,17 @@ function NavbarComponent() {
           <NavFrontWrap>
             <NavLogo>ssac</NavLogo>
             <NavLinkWrap>
-              <NavStyledLink to="/signin">로그인</NavStyledLink>
-              <NavStyledLink to="/signup">회원가입</NavStyledLink>
+              {!isLoggedin ? (
+                <>
+                  <NavStyledLink to="/signin">로그인</NavStyledLink>
+                  <NavStyledLink to="/signup">회원가입</NavStyledLink>
+                </>
+              ) : (
+                <>
+                  <NavStyledLink to="/write">글쓰기</NavStyledLink>
+                  <NavStyledLink to="/signout">로그아웃</NavStyledLink>
+                </>
+              )}
             </NavLinkWrap>
           </NavFrontWrap>
           <NavProfileWrap>

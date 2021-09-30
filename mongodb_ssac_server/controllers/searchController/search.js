@@ -6,15 +6,12 @@ const searchController = {
 
     try {
       const result = await client.search({
-        index: "test_index",
-        // size: 20,
+        index: "kor_index",
+        size: 3,
         body: {
           query: {
-            match_phrase_prefix: {
-              // query값이 들어간 모든 데이터 조회
-              content: {
-                query: q, // q변수로 시작하는(단어단위) content가 들어간 데이터 조회
-              },
+            match: {
+              "subway.ngram": q,
             },
           },
         },
@@ -23,7 +20,10 @@ const searchController = {
       console.log(result.hits.hits);
       const searchResult = result.hits.hits;
 
-      const finResult = searchResult.map((item) => item._source);
+      const finResult = searchResult.map((item) => {
+        const result = item._source;
+        return { ...result, score: item._score };
+      });
 
       res.status(200).json({
         message: "검색 성공",
