@@ -2,6 +2,7 @@ const express = require("express");
 const authController = require("../../controllers/authControllers/auth");
 const router = express.Router();
 const boardRouter = require("./board/index");
+const searchRouter = require("./search/index");
 
 // 회원가입
 router.post("/signup", authController.singup);
@@ -12,4 +13,5 @@ router.post("/signin", authController.signin);
 // 게시물 관련 모듈 불러오기
 router.use("/board", boardRouter);
 
+router.use("/search", searchRouter);
 module.exports = router;
