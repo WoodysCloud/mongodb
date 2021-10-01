@@ -68,6 +68,7 @@ const NavStyledIcon = styled.div`
   font-size: 2.5rem;
   display: flex;
   align-items: center;
+  cursor: pointer;
 
   /* "sass문법": NavStyledIcon끼리 근접해있다면, following css 적용 */
   & + & {
@@ -89,7 +90,62 @@ const NavSignout = styled.div`
   margin-right: 10px;
 `;
 
-function NavbarComponent({ isLoggedin, onClickSignout }) {
+const NavSearchRoundBox = styled.div`
+  border: 1px solid black;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+`;
+
+const NavSearchInput = styled.input`
+  flex: 1;
+  border: none;
+  width: 13rem;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+const SearchInputWrap = styled.div`
+  position: relative;
+  margin-right: 1rem;
+`;
+
+const SearchBoard = styled.div`
+  width: 100%;
+  height: 15rem;
+  position: absolute;
+  top: 3.5rem;
+  box-shadow: 0 0.4rem 0.8rem 0 rgba(0, 0, 0, 0.2);
+  border: 1px solid #dedede;
+  background: #ffffff;
+`;
+
+const SearchItemWrap = styled.div`
+  padding: 1rem;
+  cursor: pointer;
+
+  & + & {
+    border-top: 1px solid #dedede;
+  }
+`;
+
+const SerachItemTitle = styled.div`
+  font-size: 1.3rem;
+  font-weight: normal;
+`;
+
+function NavbarComponent({
+  searchState,
+  isLoggedin,
+  onClickSignout,
+  onChangeInput,
+  searchInfo,
+  searchData,
+  onClickAutoComplete,
+}) {
   return (
     <>
       <NavbarWrap>
@@ -112,9 +168,37 @@ function NavbarComponent({ isLoggedin, onClickSignout }) {
           </NavFrontWrap>
           <NavProfileWrap>
             <NavIconsWrap>
-              <NavStyledIcon>
-                <AiOutlineSearch />
-              </NavStyledIcon>
+              <SearchInputWrap>
+                <NavSearchRoundBox>
+                  <NavSearchInput
+                    name="search"
+                    value={searchInfo.search}
+                    onChange={onChangeInput}
+                  />
+                  <NavStyledIcon>
+                    <AiOutlineSearch />
+                  </NavStyledIcon>
+                </NavSearchRoundBox>
+                {searchState ? (
+                  <>
+                    <SearchBoard>
+                      {searchData.map((item, idx) => (
+                        <SearchItemWrap
+                          key={idx}
+                          onClick={() => onClickAutoComplete(item.title)}
+                        >
+                          <SerachItemTitle
+                            dangerouslySetInnerHTML={{ __html: item.title }}
+                          ></SerachItemTitle>
+                        </SearchItemWrap>
+                      ))}
+                    </SearchBoard>
+                  </>
+                ) : (
+                  <></>
+                )}
+              </SearchInputWrap>
+
               <NavStyledIcon>
                 <AiOutlineComment />
               </NavStyledIcon>
