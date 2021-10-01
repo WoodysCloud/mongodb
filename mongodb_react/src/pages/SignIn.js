@@ -2,11 +2,11 @@ import React from "react";
 import FullCenterContatiner from "../components/common/contatiner/FullCenterContatiner";
 import SignInContainer from "../containers/auth/SignInContainer";
 
-function SignIn() {
+function SignIn({ setIsLoggedin }) {
   return (
     <>
       <FullCenterContatiner>
-        <SignInContainer />
+        <SignInContainer setIsLoggedin={setIsLoggedin} />
       </FullCenterContatiner>
     </>
   );

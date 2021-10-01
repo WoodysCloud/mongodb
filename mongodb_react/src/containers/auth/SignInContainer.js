@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 
 const baseURL = "http://localhost:3000";
 
-function SignInContainer() {
+function SignInContainer({ setIsLoggedin }) {
   const history = useHistory();
 
   const [userInfo, setUserInfo] = useState({
@@ -33,6 +33,7 @@ function SignInContainer() {
         // console.log(result.data);
         const accessToken = result.data.accessToken;
         localStorage.setItem("accessToken", accessToken); // 토큰을 local에 저장
+        setIsLoggedin(true);
         history.push("/");
       }
     } catch (error) {

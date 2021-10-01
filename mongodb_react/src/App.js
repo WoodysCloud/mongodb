@@ -24,9 +24,13 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      <NavbarContainer isLoggedin={isLoggedin} /> {/* 로그인 유무 */}
+      <NavbarContainer isLoggedin={isLoggedin} setIsLoggedin={setIsLoggedin} />
       <Route path="/" exact={true} component={Home} />
-      <Route path="/signin" exact={true} component={SignIn} />
+      <Route
+        path="/signin"
+        exact={true}
+        component={() => <SignIn setIsLoggedin={setIsLoggedin} />}
+      />
       <Route path="/signup" exact={true} component={SignUp} />
     </>
   );

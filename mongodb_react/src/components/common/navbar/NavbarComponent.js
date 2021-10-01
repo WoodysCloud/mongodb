@@ -81,7 +81,15 @@ const NavProfileImg = styled.div`
   margin-left: 3rem;
 `;
 
-function NavbarComponent({ isLoggedin }) {
+const NavSignout = styled.div`
+  font-size: 1.5rem;
+  font-weight: normal;
+  text-decoration: none;
+  color: #000000;
+  margin-right: 10px;
+`;
+
+function NavbarComponent({ isLoggedin, onClickSignout }) {
   return (
     <>
       <NavbarWrap>
@@ -97,7 +105,7 @@ function NavbarComponent({ isLoggedin }) {
               ) : (
                 <>
                   <NavStyledLink to="/write">글쓰기</NavStyledLink>
-                  <NavStyledLink to="/signout">로그아웃</NavStyledLink>
+                  <NavSignout onClick={onClickSignout}>로그아웃</NavSignout>
                 </>
               )}
             </NavLinkWrap>
