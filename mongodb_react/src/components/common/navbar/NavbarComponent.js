@@ -76,7 +76,7 @@ const NavStyledIcon = styled.div`
   }
 `;
 
-const NavProfileImg = styled.div`
+const NavProfileImg = styled.img`
   width: 3.4rem;
   height: 3.4rem;
   margin-left: 3rem;
