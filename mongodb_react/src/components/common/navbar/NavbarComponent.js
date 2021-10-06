@@ -35,6 +35,8 @@ const NavFrontWrap = styled.div`
 const NavLogo = styled.div`
   font-size: 2rem;
   font-weight: bolder;
+  cursor: pointer;
+  user-select: none; /* 드래그 안되도록 */
 `;
 
 const NavLinkWrap = styled.div`
@@ -145,13 +147,14 @@ function NavbarComponent({
   searchInfo,
   searchData,
   onClickAutoComplete,
+  onClickHome,
 }) {
   return (
     <>
       <NavbarWrap>
         <NavContainer>
           <NavFrontWrap>
-            <NavLogo>ssac</NavLogo>
+            <NavLogo onClick={onClickHome}>ssac</NavLogo>
             <NavLinkWrap>
               {!isLoggedin ? (
                 <>

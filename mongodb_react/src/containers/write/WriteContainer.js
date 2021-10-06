@@ -1,10 +1,13 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useHistory } from "react-router";
 import WriteComponent from "../../components/write/WriteComponent";
 
 const baseURL = "http://localhost:3000";
 
-function WriteContainer({ setIsLoggedin }) {
+function WriteContainer() {
+  const history = useHistory();
+
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
@@ -41,6 +44,7 @@ function WriteContainer({ setIsLoggedin }) {
 
       if (response.status === 200) {
         console.log(response.data);
+        history.push("/"); // 성공하면 다시 홈페이지로 useHistory 사용
       }
     } catch (error) {
       console.log(error);

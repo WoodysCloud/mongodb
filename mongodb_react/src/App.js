@@ -6,6 +6,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Write from "./pages/Write";
 import { useEffect, useState } from "react";
+import Detail from "./pages/Detail";
 
 function App() {
   const [isLoggedin, setIsLoggedin] = useState(false);
@@ -14,7 +15,7 @@ function App() {
   // 자동 로그인
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
-    console.log(accessToken);
+    // console.log(accessToken);
     if (accessToken) {
       setIsLoggedin(true);
     } else {
@@ -34,6 +35,7 @@ function App() {
       />
       <Route path="/signup" exact={true} component={SignUp} />
       <Route path="/write" exact={true} component={Write} />
+      <Route path="/post/:postId" exact={true} component={Detail} />
     </>
   );
 }

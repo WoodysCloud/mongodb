@@ -74,6 +74,10 @@ function NavbarContainer({ isLoggedin, setIsLoggedin }) {
     history.push("/");
   };
 
+  const onClickHome = () => {
+    history.push("/");
+  };
+
   return (
     <NavbarComponent
       onClickAutoComplete={onClickAutoComplete}
@@ -83,6 +87,7 @@ function NavbarContainer({ isLoggedin, setIsLoggedin }) {
       onClickSignout={onClickSignout}
       onChangeInput={onChangeInput}
       searchInfo={searchInfo}
+      onClickHome={onClickHome}
     />
   );
 }

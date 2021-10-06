@@ -1,7 +1,12 @@
 import React from "react";
+import PostsListContainer from "../containers/posts/PostsListContainer";
 
 function Home() {
-  return <div>홈페이지</div>;
+  return (
+    <>
+      <PostsListContainer />
+    </>
+  );
 }
 
 export default Home;
