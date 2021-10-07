@@ -5,7 +5,7 @@ import NavbarComponent from "../../../components/common/navbar/NavbarComponent";
 
 const baseURL = "http://localhost:3000";
 
-function NavbarContainer({ isLoggedin, setIsLoggedin }) {
+function NavbarContainer({ isLoggedin, setIsLoggedin, profile }) {
   const history = useHistory();
 
   const [searchState, setSearchState] = useState(false);
@@ -80,6 +80,7 @@ function NavbarContainer({ isLoggedin, setIsLoggedin }) {
 
   return (
     <NavbarComponent
+      profile={profile}
       onClickAutoComplete={onClickAutoComplete}
       searchData={searchData}
       searchState={searchState}

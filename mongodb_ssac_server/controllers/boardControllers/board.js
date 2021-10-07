@@ -100,7 +100,8 @@ const boardController = {
     // }
 
     try {
-      await board.findOneAndDelete(id);
+      // findOne의 경우, {} 사용하여 명시 필요
+      await board.findOneAndDelete({ _id: id }); // findById의 경우, 그냥 findById(id)만 입력해도 됨
       res.status(200).json({
         message: "삭제 성공",
       });

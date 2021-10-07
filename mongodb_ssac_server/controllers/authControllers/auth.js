@@ -2,6 +2,23 @@ const user = require("../../models/user");
 const jwtModule = require("../../modules/jwtModule");
 
 const authController = {
+  // 회원 정보 불러오기
+  getProfile: (req, res) => {
+    const userInfo = req.userInfo;
+
+    if (userInfo) {
+      // 있을 때
+      res.status(200).json({
+        message: "프로필 조회 성공",
+        data: userInfo,
+      });
+    } else {
+      res.status(400).json({
+        message: "프로필 조회 실패",
+      });
+    }
+  },
+
   // 회원가입
   singup: async (req, res) => {
     const { userId, name, password } = req.body;

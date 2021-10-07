@@ -81,7 +81,7 @@ const NavStyledIcon = styled.div`
 const NavProfileImg = styled.img`
   width: 3.4rem;
   height: 3.4rem;
-  margin-left: 3rem;
+  /* margin-left: 3rem; */
 `;
 
 const NavSignout = styled.div`
@@ -139,6 +139,12 @@ const SerachItemTitle = styled.div`
   font-weight: normal;
 `;
 
+const ProfileName = styled.div`
+  font-size: 1.3rem;
+  font-weight: bolder;
+  margin-left: 3rem;
+`;
+
 function NavbarComponent({
   searchState,
   isLoggedin,
@@ -148,6 +154,7 @@ function NavbarComponent({
   searchData,
   onClickAutoComplete,
   onClickHome,
+  profile,
 }) {
   return (
     <>
@@ -209,6 +216,9 @@ function NavbarComponent({
                 <AiOutlineBell />
               </NavStyledIcon>
             </NavIconsWrap>
+            <ProfileName>
+              {profile && `${profile.name}님 반갑습니다`}
+            </ProfileName>
             <NavProfileImg
               src={
                 "https://careerly.co.kr/_next/static/images/img_profile-dummy-9e28d259cbf9e126af9c467a4bf0884f.png"

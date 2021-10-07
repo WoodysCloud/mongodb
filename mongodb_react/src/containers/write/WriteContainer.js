@@ -12,7 +12,7 @@ function WriteContainer() {
   const [body, setBody] = useState("");
 
   const onChangeBody = (text) => {
-    console.log(text);
+    // console.log(text);
     setBody(text);
   };
 
@@ -32,7 +32,7 @@ function WriteContainer() {
     // POST
     // url: /ssac/board
     // headers: { Authorization: token }
-    // body { title, content, boardPw}
+    // body { title, content, boardPw }
 
     try {
       const response = await axios({
